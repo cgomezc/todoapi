@@ -13,4 +13,5 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=build-env /app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet TodoApi.API.dll
+EXPOSE 8080
+CMD ASPNETCORE_URLS=http://*:8080 dotnet TodoApi.API.dll
